@@ -1,3 +1,38 @@
+html,
+body {
+  background: #000;
+  margin:0;
+  padding:0;
+  height:100%;
+  color: #fff;
+}
+
+a {
+  color: #3dd;
+}
+
+a:hover{
+  color: #fff;
+}
+
+a.movielink {
+  color: #fff;
+}
+p {
+  color: #3dd;
+}
+
+span{
+  font-size: 40px;
+  font-weight: bold;
+  color: #3dd;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+}
+
 .App {
   text-align: center;
 }

@@ -1,1 +1,1 @@
-React & Redux 
+React & Redux Movie App

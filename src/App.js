@@ -6,9 +6,13 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-    	<div className="App">
-       		<Link to="movies">Movies</Link>
-       		<Match pattern="/movies" component={ MoviesPage }/> 
+    	<div className="nav">
+    		<ul>
+    			<li><Link to="/">Home</Link></li>
+	       		<li><Link to="/movies">Movies</Link></li>
+	       		<li><Link to="/movies/new">New Movie</Link></li>
+	       		<Match pattern="/movies" component={ MoviesPage }/> 
+	       	</ul>
      	</div>
     );
   }

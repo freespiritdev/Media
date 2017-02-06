@@ -22,7 +22,7 @@ class MoviesPage extends Component {
 
 MoviesPage.propTypes = {
   movies: React.PropTypes.array.isRequired,
-  // getMovies: React.PropTypes.function.isRequired
+  getMovies: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

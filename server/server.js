@@ -4,8 +4,9 @@ import mongodb from 'mongodb';
 const app = express();
 const MONGO_URI = 'mongodb://localhost/movies';
 
-mongodb.MongoClient.connect(MONGO_URI, function(err, db) {
+mongodb.MongoClient.connect(MONGO_URI, function(error, db) {
 
+	//Define the route
 	app.get('/api/movies', (req, res) => {
 		db.collection('movies').find({}).toArray((error, movies) => {
 			res.json({ movies });

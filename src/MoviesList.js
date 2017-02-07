@@ -7,7 +7,7 @@ export default function MoviesList({ movies }) {
 	);
 
 	const moviesList = (
-		<p>movies list</p>
+		<p>Blah Blah Blah</p>
 	);
 
 	return (

@@ -9,13 +9,12 @@ class MoviesPage extends Component {
   }
   render() {
     return (
-    <div className="container">
-        <div className="text-center">
-          <h1>Movies List</h1>
-          <MoviesList movies={this.props.movies}/>
-
-        </div>
-     </div>
+      <div className="container">
+          <div>
+            <h1>Movies List</h1>
+            <MoviesList movies={this.props.movies}/>
+          </div>
+       </div>
     );
   }
 }

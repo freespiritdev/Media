@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Match } from 'react-router';
 import MoviesPage  from './MoviesPage';
+import MovieForm from './MovieForm';
 import './App.css';
 
 class App extends Component {
@@ -21,14 +22,15 @@ class App extends Component {
 
 	          		<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	            		<ul className="nav navbar-nav navbar-right">
-	              			<li><Link to="/">Home</Link></li>
-		       				<li><Link to="/movies">Movies</Link></li>
-		       				<li><Link to="/movies/new">New Movie</Link></li>	
+	              			<li><Link className="links" activeClassName="active" activeOnlyWhenExact to="/">Home</Link></li>
+		       				<li><Link className="links" activeClassName="active" activeOnlyWhenExact to="/movies">Movies</Link></li>	
+	            			<li><Link className="links" activeClassName="active" activeOnlyWhenExact to="/movies/new">New Movie</Link></li>
 	            		</ul>
 	          		</div>
 	        	</div>
 	      	</nav>
-      		<Match pattern="/movies" component={ MoviesPage }/> 
+	        <Match exactly pattern="/movies" component={MoviesPage} />
+	        <Match pattern="/movies/new" component={MovieForm} />
       	</div>
     );
   }

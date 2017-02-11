@@ -47,7 +47,7 @@ class MovieForm extends Component {
 	render() {
 		const form = (
 			<form onSubmit={this.handleSubmit} className={classnames('form', { loading: this.state.loading })}>
-				<h1>Add new movie</h1>
+				<h1 className="text-center">Add new movie</h1>
 
 				{!!this.state.errors.global && <div className="not loading"><p>{this.state.errors.global}</p></div>}
 				

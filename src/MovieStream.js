@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function MovieStream({ movie }) {
 	return (
-		<div>
+		<div className="stream">
 			<div>
-				<h2>{movie.title}</h2>
+				<h6 className="text-center">{movie.title}</h6>
 			</div>
 			<div>
 				<img src={movie.photo} alt="Movie Photo" />

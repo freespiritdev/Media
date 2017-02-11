@@ -16,9 +16,9 @@ span{
   color: #3dd;
 }
 
-h1 {
-  text-align: center;
-  color: #fff;
+img{
+  height: 200px;
+  width: 150px;
 }
 
 .nav{
@@ -43,3 +43,7 @@ h1 {
   letter-spacing: normal;
 }
 
+.stream {
+  float: left;
+  margin: 5px;
+}

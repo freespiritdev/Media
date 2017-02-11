@@ -20,9 +20,9 @@ mongodb.MongoClient.connect(MONGO_URI, function(error, db) {
 
 	//Define the route
 	app.get('/api/movies', (req, res) => {
-		db.collection('movies').find({}).toArray((error, movies) => {
+			db.collection('movies').find({}).toArray((error, movies) => {
 			res.json({ movies });
-		});
+		});	
 	});
 
 	app.post('/api/movies', (req, res) => {

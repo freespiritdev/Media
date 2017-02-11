@@ -1,5 +1,5 @@
 export const SET_MOVIES = 'SET_MOVIES';
-
+export const ADD_MOVIE = 'ADD_MOVIE';
 
 function handleResponse(response){
 	if (response.ok) {
@@ -11,6 +11,14 @@ function handleResponse(response){
 	}
 
 }
+
+export function addMovie(movie) {
+	return {
+		type: ADD_MOVIE,
+		movie
+	}
+}
+
 export function setMovies(movies) {
 	return {
 		type: SET_MOVIES,
@@ -26,7 +34,8 @@ export function saveMovie(data) {
 			headers: {
 				"Content-Type": "application/json"
 			}
-		}).then(handleResponse);
+		}).then(handleResponse)
+			.then(data => dispatch(addMovie(data.movie)));
 	}
 }
 

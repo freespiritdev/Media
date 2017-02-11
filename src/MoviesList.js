@@ -1,5 +1,5 @@
 import React from 'react';
-
+import MovieStream from './MovieStream'
 
 export default function MoviesList({ movies }) {
 	const emptyMsg = (
@@ -7,7 +7,9 @@ export default function MoviesList({ movies }) {
 	);
 
 	const moviesList = (
-		<p>Blah Blah Blah</p>
+		<div>
+			{ movies.map(movie => <MovieStream movie={movie} key={movie._id} />)}
+		</div>
 	);
 
 	return (

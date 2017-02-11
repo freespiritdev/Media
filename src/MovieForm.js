@@ -72,7 +72,6 @@ class MovieForm extends Component {
 		return (
 			<div>
 				{ this.state.complete ? <Redirect to="/movies"/> : form }
-				
 			</div>
 		);
 	}

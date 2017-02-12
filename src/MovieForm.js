@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { Redirect } from 'react-router';
-import { connect } from 'react-redux'
-import { saveMovie} from './actions';
+
 
 class MovieForm extends Component {
 	state = {
-		title: '',
-		photo: '',
+		title: this.props.movie ? this.props.movie.title : '',
+		photo: this.props.movie ? this.props.movie.photo : '',
+		_id: this.props.movie ? this.props.movie._id : null,
 		errors: {},
-		loading: false,
-		complete: false
+		loading: false
+	}
+
+	componentWillReceiveProps = (nextProps) => {
+		this.setState({
+			title: nextProps.movie.title,
+			photo: nextProps.movie.photo,
+			_id: nextProps.movie._id
+		})
 	}
 
 	handleChange = (event) => {
@@ -20,8 +26,7 @@ class MovieForm extends Component {
 			this.setState({ [event.target.name]: event.targe.value, errors });
 		} else {
 			this.setState({ [event.target.name]: event.target.value })
-		}
-		
+		}	
 	}
 
 	handleSubmit = (event) => {
@@ -34,13 +39,10 @@ class MovieForm extends Component {
 		const isVal = Object.keys(errors).length === 0
 
 		if (isVal) {
-			const { title, photo } = this.state;
+			const { title, photo, _id} = this.state;
 			this.setState({ loading: true });
-			this.props.saveMovie({ title, photo }).then(
-				() => { this.setState({ complete: true })},
-				(err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
-
-			);
+			this.props.saveMovie({ title, photo, _id })
+				.catch((error) => error.response.json().then(({errors}) => this.setState({ errors, loading: false })));
 		}
 	}
 
@@ -71,10 +73,10 @@ class MovieForm extends Component {
 		);
 		return (
 			<div>
-				{ this.state.complete ? <Redirect to="/movies"/> : form }
+				{ form }
 			</div>
 		);
 	}
 }
 
-export default connect(null, { saveMovie })(MovieForm);
+export default MovieForm;

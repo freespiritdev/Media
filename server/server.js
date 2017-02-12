@@ -18,7 +18,7 @@ function validate(data) {
 
 mongodb.MongoClient.connect(MONGO_URI, function(error, db) {
 
-	//Define the route
+	//Define the routes
 	app.get('/api/movies', (req, res) => {
 			db.collection('movies').find({}).toArray((error, movies) => {
 			res.json({ movies });
@@ -41,6 +41,34 @@ mongodb.MongoClient.connect(MONGO_URI, function(error, db) {
 			res.status(400).json({ errors });
 		}
 
+	});
+
+	app.get('/api/movies/:_id', (req, res) => {
+		db.collection('movies').findOne( { _id: new mongodb.ObjectId(req.params._id) }, (err, movie) => {
+			res.json({ movie })
+		})
+	});
+
+	app.put('/api/movies/:_id', (req, res) => {
+		const { errors, isVal } = validate(req.body);
+
+		if (isVal) {
+			const { title, photo } = req.body;
+			db.collection('movies').findOneAndUpdate(
+				{ _id: new mongodb.ObjectId(req.params._id) },
+				{ $set: { title, photo }},
+				{ returnOriginal: false },
+				(err, result) => {
+					if (err) { res.status(500).json({ errors: { global: error }}); 
+
+					return; 
+				}
+					res.json({ movie: result.value });
+				}
+			);
+		} else {
+			res.status(400).json({ errors });
+		}
 	});
   
 	app.use((req, res) => {

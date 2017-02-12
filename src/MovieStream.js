@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default function MovieStream({ movie }) {
 	return (
@@ -9,9 +10,11 @@ export default function MovieStream({ movie }) {
 			<div>
 				<img src={movie.photo} alt="Movie Photo" />
 			</div>
-
+			<div>
+				<Link to={`/movies/${movie._id}`} className="btn btn-warning">Edit</Link>
+				<div className="btn btn-danger">Remove</div>
+			</div>
 		</div>
-
 	);
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Match } from 'react-router';
 import MoviesPage  from './MoviesPage';
-import MovieForm from './MovieForm';
+import MovieFormHome from './MovieFormHome';
 import './App.css';
 
 class App extends Component {
@@ -30,7 +30,8 @@ class App extends Component {
 	        	</div>
 	      	</nav>
 	        <Match exactly pattern="/movies" component={MoviesPage} />
-	        <Match pattern="/movies/new" component={MovieForm} />
+	        <Match pattern="/movies/new" component={MovieFormHome} />
+	        <Match pattern="/movies/:_id" component={MovieFormHome} />
       	</div>
     );
   }

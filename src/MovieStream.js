@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 export default function MovieStream({ movie }) {
 	return (
 		<div className="stream">
-			<div>
-				<h6 className="text-center">{movie.title}</h6>
+			<div id="title">
+				<h6>{movie.title}</h6>
 			</div>
 			<div>
 				<img src={movie.photo} alt="Movie Photo" />

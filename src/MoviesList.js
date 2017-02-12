@@ -1,14 +1,14 @@
 import React from 'react';
 import MovieStream from './MovieStream'
 
-export default function MoviesList({ movies }) {
+export default function MoviesList({ movies, deleteMovie }) {
 	const emptyMsg = (
 		<p>No movies available yet.</p>
 	);
 
 	const moviesList = (
 		<div>
-			{ movies.map(movie => <MovieStream movie={movie} key={movie._id} />)}
+			{ movies.map(movie => <MovieStream movie={movie} key={movie._id} deleteMovie={deleteMovie} />)}
 		</div>
 	);
 
@@ -21,5 +21,6 @@ export default function MoviesList({ movies }) {
 }
 
 MoviesList.propTypes = {
-	movies: React.PropTypes.array.isRequired
+	movies: React.PropTypes.array.isRequired,
+	deleteMovie: React.PropTypes.func.isRequired
 }

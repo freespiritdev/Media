@@ -1,4 +1,4 @@
-import { SET_MOVIES, ADD_MOVIE, MOVIE_FOUND, MOVIE_UPDATED} from '../actions';
+import { SET_MOVIES, ADD_MOVIE, MOVIE_FOUND, MOVIE_UPDATED, MOVIE_DELETED } from '../actions';
 
 export default function movies(state = [], action = {}) {
   switch(action.type) {
@@ -25,10 +25,14 @@ export default function movies(state = [], action = {}) {
     			action.movie
     		]
     	}
+
     case MOVIE_UPDATED:
     	return state.map(item => {
     		if (item._id === action.movie._id) return action.movie;
     		return item;
-    });
+    	});
+
+    case MOVIE_DELETED:
+    	return state.filter(item => item._id !== action.movieId);
   }
 }

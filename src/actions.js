@@ -2,6 +2,7 @@ export const SET_MOVIES = 'SET_MOVIES';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const MOVIE_FOUND = 'MOVIE_FOUND';
 export const MOVIE_UPDATED = 'MOVIE_UPDATED';
+export const MOVIE_DELETED = 'MOVIE_DELETED';
 
 function handleResponse(response){
 	if (response.ok) {
@@ -69,6 +70,24 @@ export function updateMovie(data) {
 	}
 }
 
+export function deleteMovie(id) {
+	return dispatch => {
+		return fetch(`/api/movies/${id}`, {
+			method: 'delete', 
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}).then(handleResponse)
+			.then(data => dispatch(movieDeleted(id)));
+	}
+}
+
+export function movieDeleted(movieId) {
+	return {
+		type: MOVIE_DELETED,
+		movieId
+	}
+}
 
 export function getMovies() {
 	return dispatch => {

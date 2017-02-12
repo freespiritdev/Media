@@ -70,6 +70,14 @@ mongodb.MongoClient.connect(MONGO_URI, function(error, db) {
 			res.status(400).json({ errors });
 		}
 	});
+
+	app.delete('/api/movies/:_id', (req, res) => {
+		db.collection('movies').deleteOne({ _id: new mongodb.ObjectId(req.params._id) }, (error, r) => {
+			if (error) { res.status(500).json({ errors: { global: err }}); return; }
+
+			res.json({});
+		})
+	});
   
 	app.use((req, res) => {
 		res.status(404).json({

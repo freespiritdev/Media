@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MoviesList from './MoviesList';
-import { getMovies } from './actions';
+import { getMovies, deleteMovie } from './actions';
 
 class MoviesPage extends Component {
   componentDidMount() {
@@ -12,7 +12,7 @@ class MoviesPage extends Component {
       <div className="container">
           <div>
             <h1 className="text-center">Movies List</h1>
-            <MoviesList movies={this.props.movies}/>
+            <MoviesList movies={this.props.movies} deleteMovie={this.props.deleteMovie} />
           </div>
        </div>
     );
@@ -21,7 +21,8 @@ class MoviesPage extends Component {
 
 MoviesPage.propTypes = {
   movies: React.PropTypes.array.isRequired,
-  getMovies: React.PropTypes.func.isRequired
+  getMovies: React.PropTypes.func.isRequired,
+  deleteMovie: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -30,4 +31,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getMovies })(MoviesPage);
+export default connect(mapStateToProps, { getMovies, deleteMovie })(MoviesPage);

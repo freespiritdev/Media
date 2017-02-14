@@ -29,13 +29,15 @@ class App extends Component {
 	          		<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	            		<ul className="nav navbar-nav navbar-right">
 	              			<li><ActiveLink activeOnlyWhenExact to="/" label="Home"/></li>
-		       				<li><ActiveLink activeOnlyWhenExact to="/movies" label="Movies"/></li>	
+		       				<li><ActiveLink activeOnlyWhenExact to="/movies" label="Movies"/></li>
+		       				<li><ActiveLink activeOnlyWhenExact to="/shows" label="Shows"/></li>
+		       				<li><ActiveLink activeOnlyWhenExact to="/shows/new" label="New Show"/></li>	
 	            			<li><ActiveLink activeOnlyWhenExact to="/movies/new" label="New Movie"/></li>
 	            		</ul>
 	          		</div>
 	        	</div>
 	      	</nav>
-	        <Route exactly path="/movies" component={MoviesPage} />
+	        <Route exact path="/movies" component={MoviesPage} />
 	        <Route path="/movies/new" component={MovieFormHome} />
 	        <Route path="/movies/:_id" component={MovieFormHome} />
       	</div>

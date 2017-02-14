@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Link, Match } from 'react-router';
+import { Link, Route } from 'react-router-dom';
 import MoviesPage  from './MoviesPage';
 import MovieFormHome from './MovieFormHome';
 import './App.css';
+
+const ActiveLink = ({ label, to, activeOnlyWhenExact }) => (
+	<Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
+		<Link className={match ? 'active link' : 'link'} to={to}>{label}</Link>
+	)} />
+);
 
 class App extends Component {
   render() {
@@ -22,16 +28,16 @@ class App extends Component {
 
 	          		<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	            		<ul className="nav navbar-nav navbar-right">
-	              			<li><Link className="links" activeClassName="active" activeOnlyWhenExact to="/">Home</Link></li>
-		       				<li><Link className="links" activeClassName="active" activeOnlyWhenExact to="/movies">Movies</Link></li>	
-	            			<li><Link className="links" activeClassName="active" activeOnlyWhenExact to="/movies/new">New Movie</Link></li>
+	              			<li><ActiveLink activeOnlyWhenExact to="/" label="Home"/></li>
+		       				<li><ActiveLink activeOnlyWhenExact to="/movies" label="Movies"/></li>	
+	            			<li><ActiveLink activeOnlyWhenExact to="/movies/new" label="New Movie"/></li>
 	            		</ul>
 	          		</div>
 	        	</div>
 	      	</nav>
-	        <Match exactly pattern="/movies" component={MoviesPage} />
-	        <Match pattern="/movies/new" component={MovieFormHome} />
-	        <Match pattern="/movies/:_id" component={MovieFormHome} />
+	        <Route exactly path="/movies" component={MoviesPage} />
+	        <Route path="/movies/new" component={MovieFormHome} />
+	        <Route path="/movies/:_id" component={MovieFormHome} />
       	</div>
     );
   }

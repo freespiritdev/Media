@@ -4,6 +4,12 @@ export const MOVIE_FOUND = 'MOVIE_FOUND';
 export const MOVIE_UPDATED = 'MOVIE_UPDATED';
 export const MOVIE_DELETED = 'MOVIE_DELETED';
 
+export const SET_SHOWS = 'SET_SHOWS';
+export const ADD_SHOW = 'ADD_SHOW';
+export const SHOW_FOUND = 'SHOW_FOUND';
+export const SHOW_UPDATED = 'SHOW_UPDATED';
+export const SHOW_DELETED = 'SHOW_DELETED';
+
 function handleResponse(response){
 	if (response.ok) {
 		return response.json();
@@ -103,5 +109,96 @@ export function getMovie(id) {
 		fetch(`/api/movies/${id}`)
 			.then(res => res.json())
 			.then(data => dispatch(movieFound(data.movie)));
+	}
+}
+
+// TV Shows
+export function addShow(show) {
+	return {
+		type: ADD_SHOW,
+		show
+	}
+}
+
+export function setShows(shows) {
+	return {
+		type: SET_SHOWS,
+		shows
+	}
+}
+
+export function showFound(show) {
+	return {
+		type: SHOW_FOUND,
+		show
+	}
+
+}
+
+export function showUpdated(show) {
+	return {
+		type: SHOW_UPDATED,
+		show
+	}
+}
+
+export function saveShow(data) {
+	return dispatch => {
+		return fetch('/api/shows', {
+			method: 'post',
+			body:   JSON.stringify(data), 
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}).then(handleResponse)
+			.then(data => dispatch(addShow(data.show)));
+	}
+}
+
+export function updateShow(data) {
+	return dispatch => {
+		return fetch(`/api/shows/${data._id}`, {
+			method: 'put',
+			body:   JSON.stringify(data), 
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}).then(handleResponse)
+			.then(data => dispatch(showUpdated(data.show)));
+	}
+}
+
+export function deleteShow(id) {
+	return dispatch => {
+		return fetch(`/api/shows/${id}`, {
+			method: 'delete', 
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}).then(handleResponse)
+			.then(data => dispatch(showDeleted(id)));
+	}
+}
+
+export function showDeleted(showId) {
+	return {
+		type: SHOW_DELETED,
+		showId
+	}
+}
+
+export function getShows() {
+	return dispatch => {
+		fetch('/api/shows')
+			.then(res => res.json())
+			.then(data => dispatch(setShows(data.shows)));
+	}
+}
+
+export function getShow(id) {
+	return dispatch => {
+		fetch(`/api/shows/${id}`)
+			.then(res => res.json())
+			.then(data => dispatch(showFound(data.show)));
 	}
 }

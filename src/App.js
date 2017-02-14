@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import MoviesPage  from './MoviesPage';
+import ShowsPage  from './ShowsPage';
 import MovieFormHome from './MovieFormHome';
+import ShowFormHome from './ShowFormHome';
 import './App.css';
 
 const ActiveLink = ({ label, to, activeOnlyWhenExact }) => (
@@ -30,16 +32,19 @@ class App extends Component {
 	            		<ul className="nav navbar-nav navbar-right">
 	              			<li><ActiveLink activeOnlyWhenExact to="/" label="Home"/></li>
 		       				<li><ActiveLink activeOnlyWhenExact to="/movies" label="Movies"/></li>
-		       				<li><ActiveLink activeOnlyWhenExact to="/shows" label="Shows"/></li>
-		       				<li><ActiveLink activeOnlyWhenExact to="/shows/new" label="New Show"/></li>	
 	            			<li><ActiveLink activeOnlyWhenExact to="/movies/new" label="New Movie"/></li>
+	            			<li><ActiveLink activeOnlyWhenExact to="/shows" label="Shows"/></li>
+	            			<li><ActiveLink activeOnlyWhenExact to="/shows/new" label="New Show"/></li>	
 	            		</ul>
 	          		</div>
 	        	</div>
 	      	</nav>
 	        <Route exact path="/movies" component={MoviesPage} />
+	        <Route exact path="/shows" component={ShowsPage} />
 	        <Route path="/movies/new" component={MovieFormHome} />
 	        <Route path="/movies/:_id" component={MovieFormHome} />
+	        <Route path="/shows/new" component={ShowFormHome} />
+	        <Route path="/shows/:_id" component={ShowFormHome} />
       	</div>
     );
   }

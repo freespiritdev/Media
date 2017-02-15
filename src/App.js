@@ -45,6 +45,7 @@ class App extends Component {
 	        <Route path="/movies/:_id" component={MovieFormHome} />
 	        <Route path="/shows/new" component={ShowFormHome} />
 	        <Route path="/shows/:_id" component={ShowFormHome} />
+
       	</div>
     );
   }

@@ -11,7 +11,7 @@ class MoviesPage extends Component {
     return (
       <div className="container">
           <div>
-            <h1 className="text-center">Movies List</h1>
+            <h1 className="text-center">Movies</h1>
             <MoviesList movies={this.props.movies} deleteMovie={this.props.deleteMovie} />
           </div>
        </div>

@@ -11,7 +11,7 @@ class ShowsPage extends Component {
     return (
       <div className="container">
           <div>
-            <h1 className="text-center">TV Shows List</h1>
+            <h1 className="text-center">TV Shows</h1>
             <ShowsList shows={this.props.shows} deleteShow={this.props.deleteShow} />
           </div>
        </div>

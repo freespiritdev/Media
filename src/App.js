@@ -25,7 +25,6 @@ class App extends Component {
 		              		<span className="icon-bar"></span>
 		              		<span className="icon-bar"></span>
 		            	</button>
-		            	<Link className="navbar-brand" to='/'>Media</Link>
 	          		</div>
 
 	          		<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

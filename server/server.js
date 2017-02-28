@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 const app = express();
 app.use(bodyParser.json());
 
-const MONGO_URI = 'mongodb://localhost/media';
+const MONGO_URI = 'mongodb://localhost/movies';
 
 function validate(data) {
 	let errors = {};
